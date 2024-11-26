@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga & Exercises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('media/13.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        /* Navbar styling */
+        nav {
+            background-color: #ff6f61;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #ff8a75;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #ff6f61;
+        }
+
+        .main-content {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white */
+            border-radius: 10px;
+            margin: 20px auto;
+            /* Center the box horizontally */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            /* Removed max-height to allow dynamic height */
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        .dropdown {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dropdown button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown button:hover {
+            background-color: #ff8a75;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .videos iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diet p {
+            font-size: 1.1rem;
+            color: #333;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .videos iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>CycleEase</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Nexercise.html">Yoga and Diet</a></li>
+            <li><a href="tracker.html">Period Tracker</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h1>Yoga & Exercises</h1>
+
+        <!-- Dropdown for Yoga and Exercise Videos -->
+        <div class="dropdown">
+            <button onclick="toggleDropdown('dropdownVideos')">View Yoga & Exercise Videos</button>
+            <div class="dropdown-content" id="dropdownVideos">
+                <div class="videos">
+                    <h3>Yoga and Exercise Videos</h3>
+                    <iframe src="https://www.youtube.com/embed/FtQb7XLBYBY" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/3YzSpRncW4s" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/4JaCcp39iVI" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/gA8LEqRXAVk" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown for Diet Recommendations -->
+        <div class="dropdown">
+            <button onclick="toggleDropdown('dropdownDiet')">View Diet Recommendations</button>
+            <div class="dropdown-content" id="dropdownDiet">
+                <div class="diet">
+                    <h3>Diet Recommendations</h3>
+                    <p>A balanced diet is crucial for women during their menstrual cycle. It helps in managing symptoms
+                        like bloating, fatigue, and cramps.</p>
+                    <p><strong>Iron-rich foods:</strong> Incorporate foods like spinach, lentils, and red meat to
+                        replenish the iron lost during menstruation.</p>
+                    <p><strong>Calcium and Vitamin D:</strong> Include dairy products, fortified cereals, and fatty fish
+                        to strengthen bones and alleviate cramps.</p>
+                    <p><strong>Omega-3 Fatty Acids:</strong> Foods like flaxseeds, chia seeds, and walnuts help reduce
+                        inflammation and menstrual pain.</p>
+                    <p><strong>Hydration:</strong> Drink plenty of water to prevent dehydration and bloating during your
+                        cycle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Women's Health Tracker</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

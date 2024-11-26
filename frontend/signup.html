@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Women's Health Tracker</title>
+    <style>
+               body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff6f61, #ff8a75);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff8a75;
+        }
+        .back-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .back-link a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+            <input type="submit" value="Sign Up">
+        </form>
+
+        <div class="back-link">
+            <p>Already have an account? <a href="login.html">Login here</a>.</p>
+        </div>
+    </div>
+
+<script src="./js/signup.js"></script>
+</body>
+</html>

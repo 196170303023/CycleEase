@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('media/images_5.png');
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        /* Navbar styling */
+        nav {
+            background-color: #ff6f61;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #ff8a75;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #ff6f61;
+        }
+
+        .main-content {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        /* White box around the tracker form */
+        .tracker-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 0;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form input[type="date"],
+        form input[type="number"],
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        form button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #ff8a75;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tracker-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>CycleEase</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="exercise.html">Yoga and Diet</a></li>
+            <li><a href="tracker.html">Period Tracker</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <!-- White box container around the form -->
+        <div class="tracker-container">
+            <h1>Period Tracker</h1>
+
+            <form id="trackerForm">
+                <label for="lastPeriod">Last Period Date:</label>
+                <input type="date" id="lastPeriod" name="lastPeriod" required>
+
+                <label for="cycleLength">Average Cycle Length (in days):</label>
+                <input type="number" id="cycleLength" name="cycleLength" min="1" required>
+
+                <button type="button" onclick="calculateNextPeriod()">Predict Next Period</button>
+            </form>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Women's Health Tracker</p>
+    </footer>
+
+    <script>
+        function calculateNextPeriod() {
+            const lastPeriod = document.getElementById('lastPeriod').value;
+            const cycleLength = parseInt(document.getElementById('cycleLength').value, 10);
+
+            if (lastPeriod && cycleLength) {
+                const lastPeriodDate = new Date(lastPeriod);
+                const nextPeriodDate = new Date(lastPeriodDate);
+                nextPeriodDate.setDate(lastPeriodDate.getDate() + cycleLength);
+
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const nextPeriodFormatted = nextPeriodDate.toLocaleDateString(undefined, options);
+
+                document.getElementById('result').innerHTML = `Your predicted next period date is <strong>${nextPeriodFormatted}</strong>.`;
+            } else {
+                document.getElementById('result').innerHTML = 'Please fill in all fields.';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
