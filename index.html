@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Health Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('../frontend/media/14.png');
+            /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            /* Ensure full viewport height */
+        }
+
+        /* Main content area with a semi-transparent background */
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* White background with 80% opacity */
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            border-radius: 10px;
+            /* Rounded corners for a softer look */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow for focus */
+            max-width: 800px;
+            /* Limit width for readability */
+            margin: 30px auto;
+            /* Center content */
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            /* Larger font for emphasis */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            /* Text shadow for better readability */
+        }
+
+        p {
+            font-size: 1.2rem;
+            /* Slightly larger text */
+            color: #333;
+            font-weight: bold;
+            /* Bold for better contrast */
+            margin-bottom: 30px;
+        }
+
+        /* Highlight buttons */
+        button {
+            background-color: #ff6f61;
+            /* Bright color for prominence */
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            /* Larger font for buttons */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            /* Shadow for 3D effect */
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #ff8a75;
+            /* Slightly lighter on hover */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            /* Increased shadow on hover */
+        }
+
+        /* Video and schemes container with background */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Slightly opaque background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+
+        nav {
+            background-color: #ff6f61;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #ff8a75;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #ff6f61;
+        }
+
+        .main-content {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .videos iframe,
+        .schemes iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dropdown button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown button:hover {
+            background-color: #ff8a75;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            color: #ff6f61;
+        }
+
+        .schemes p {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            
+        }
+
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .videos iframe,
+            .schemes iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>CycleEase</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="exercise.html">Yoga and Diet</a></li>
+            <li><a href="tracker.html">Period Tracker</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h1>Women's Health and Safety</h1>
+        <p>Access resources, track your cycle, and stay healthy.</p>
+
+        <!-- Dropdown for Safety Videos -->
+        <div class="dropdown">
+            <button onclick="toggleDropdown('dropdownVideos')">View Safety Videos</button>
+            <div class="dropdown-content container" id="dropdownVideos">
+                <div class="videos">
+                    <h3>Safety Videos</h3>
+                    <!-- First Video -->
+                    <iframe src="https://www.youtube.com/embed/j0b0zPhQjVI" allowfullscreen></iframe>
+                    <!-- Second Video -->
+                    <iframe src="https://www.youtube.com/embed/SSC12rZdU6M" allowfullscreen></iframe>
+                    <!-- Third Video -->
+                    <iframe src="https://www.youtube.com/embed/FtQb7XLBYBY" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown for Government Schemes -->
+        <div class="dropdown">
+            <button onclick="toggleDropdown('dropdownSchemes')">View Government Schemes</button>
+            <div class="dropdown-content container" id="dropdownSchemes">
+                <div class="schemes">
+                    <h3>Government Schemes for Women</h3>
+                    <p>
+                        <strong>Beti Bachao Beti Padhao (BBBP):</strong> This scheme aims to address the declining child
+                        sex ratio and promote the survival, protection, and education of the girl child.<br>
+                        <a href="https://www.myscheme.gov.in/schemes/bbbp">Read more</a>
+                    </p>
+                    <p>
+                        <strong>One Stop Centre (Sakhi):</strong> These centers provide support to women affected by
+                        violence, offering services such as medical aid, legal aid, and psychological counseling.<br>
+                        <a
+                            href="https://vikaspedia.in/social-welfare/women-and-child-development/women-development-1/one-stop-centre-scheme">Read
+                            more</a>
+                    </p>
+                    <p>
+                        <strong>Swadhar Greh:</strong> Provides shelter, food, and rehabilitation services to women in
+                        distress, including survivors of violence.<br>
+                        <a href="https://www.india.gov.in/schemes-women">Read more</a>
+                    </p>
+                    <p>
+                        <strong>Ujjawala Scheme:</strong> Focuses on the prevention of trafficking and the
+                        rehabilitation of victims through rescue and reintegration.<br>
+                        <a
+                            href="https://vikaspedia.in/energy/policy-support/pradhan-mantri-ujjwala-yojana#:~:text=Pradhan%20Mantri%20Ujjwala%20Yojana%20is,2016%20in%20Ballia%2C%20Uttar%20Pradesh">Read
+                            more</a>
+                    </p>
+                    <p>
+                        <strong>Pradhan Mantri Matru Vandana Yojana (PMMVY):</strong> A maternity benefit program
+                        offering financial assistance to pregnant and lactating mothers.<br>
+                        <a href="https://pmmvy.wcd.gov.in/">Read more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2024 Women's Health Tracker</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
